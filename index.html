@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recursos de Marketing - Enter</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sauce+One:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Open Sans', sans-serif;
             min-height: 100vh;
-            background: #1e2bff;
+            background: #06040f;
             position: relative;
             overflow-x: hidden;
         }
@@ -20,8 +21,11 @@
             content: '';
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, #1e2bff 0%, #3633d4 25%, #7b1eff 75%, #8732ff 100%);
-            opacity: 0.95;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 10%, rgba(54,51,212,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 60% at 80% 80%, rgba(123,30,255,0.28) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 40% at 50% 50%, rgba(10,6,30,0.9) 0%, transparent 100%),
+                #06040f;
             z-index: 1;
         }
 
@@ -48,11 +52,12 @@
         }
 
         .main-title {
+            font-family: 'Open Sauce One', 'Open Sans', sans-serif;
+            font-weight: 300;
             font-size: 5rem;
-            font-weight: 800;
             color: white;
-            letter-spacing: -3px;
-            line-height: 1.1;
+            letter-spacing: -2px;
+            line-height: 1.05;
             max-width: 1200px;
         }
 
@@ -66,11 +71,11 @@
         }
 
         .resource-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.08);
             transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
             position: relative;
             overflow: hidden;
@@ -81,21 +86,21 @@
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
             transition: left 0.6s;
         }
 
         .resource-card:hover::before { left: 100%; }
 
         .resource-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(255,255,255,0.14);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(123,47,255,0.15);
         }
 
         .card-title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 15px;
             color: white;
@@ -105,26 +110,26 @@
         }
 
         .card-description {
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 0.95rem;
+            opacity: 0.6;
             margin-bottom: 25px;
             line-height: 1.5;
         }
 
-        .resource-links { display: flex; flex-direction: column; gap: 12px; }
+        .resource-links { display: flex; flex-direction: column; gap: 10px; }
 
         .resource-link {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 15px 20px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            padding: 13px 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
-            color: white;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -135,20 +140,76 @@
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
             transition: left 0.5s;
         }
 
         .resource-link:hover::before { left: 100%; }
 
         .resource-link:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.4);
-            transform: translateX(5px);
+            background: rgba(255,255,255,0.09);
+            border-color: rgba(255,255,255,0.18);
+            color: white;
+            transform: translateX(4px);
         }
 
-        .link-icon { font-size: 1.2rem; flex-shrink: 0; }
+        .link-icon { font-size: 1.1rem; flex-shrink: 0; }
 
+        /* ── RANKING BUTTON — special ── */
+        .resource-link.ranking-btn {
+            background: linear-gradient(135deg, rgba(123,47,255,0.2), rgba(54,51,212,0.2));
+            border: 1px solid rgba(123,47,255,0.45);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-link.ranking-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(123,47,255,0.0), rgba(123,47,255,0.15));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .resource-link.ranking-btn:hover {
+            background: linear-gradient(135deg, rgba(123,47,255,0.35), rgba(54,51,212,0.35));
+            border-color: rgba(123,47,255,0.75);
+            transform: translateX(4px);
+            box-shadow: 0 0 20px rgba(123,47,255,0.3), 0 4px 16px rgba(0,0,0,0.4);
+            color: white;
+        }
+
+        .resource-link.ranking-btn:hover::after { opacity: 1; }
+
+        .ranking-badge {
+            margin-left: auto;
+            padding: 3px 9px;
+            background: linear-gradient(135deg, #7B2FFF, #3633d4);
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(123,47,255,0.5);
+        }
+
+        .ranking-icon-wrap {
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #7B2FFF, #3633d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(123,47,255,0.5);
+        }
+
+        /* floating bg shapes */
         .floating-elements {
             position: fixed;
             top: 0; left: 0;
@@ -159,7 +220,7 @@
 
         .floating-shape {
             position: absolute;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.02);
             border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
@@ -171,8 +232,8 @@
 
         @keyframes float {
             0%,100% { transform: translateY(0px) rotate(0deg); opacity:0.3; }
-            33% { transform: translateY(-20px) rotate(120deg); opacity:0.7; }
-            66% { transform: translateY(-10px) rotate(240deg); opacity:0.5; }
+            33% { transform: translateY(-20px) rotate(120deg); opacity:0.6; }
+            66% { transform: translateY(-10px) rotate(240deg); opacity:0.4; }
         }
 
         @keyframes fadeInUp {
@@ -183,8 +244,8 @@
         .footer {
             margin-top: 40px;
             text-align: center;
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.85rem;
+            opacity: 0.35;
             animation: fadeInUp 1.8s ease-out;
         }
 
@@ -201,14 +262,14 @@
             gap: 10px;
             padding: 16px 24px;
             background: linear-gradient(135deg, #7B2FFF, #5B1FDF);
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255,255,255,0.15);
             border-radius: 50px;
             color: white;
             font-family: 'Open Sans', sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 0 0 1px rgba(123,47,255,0.5), 0 8px 32px rgba(123,47,255,0.45);
+            box-shadow: 0 0 0 1px rgba(123,47,255,0.4), 0 8px 32px rgba(123,47,255,0.4);
             transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
             animation: fabEntrance 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.8s both;
             white-space: nowrap;
@@ -216,7 +277,7 @@
 
         .fab-request:hover {
             transform: translateY(-4px) scale(1.04);
-            box-shadow: 0 0 0 1px rgba(123,47,255,0.7), 0 16px 48px rgba(123,47,255,0.6);
+            box-shadow: 0 0 0 1px rgba(123,47,255,0.7), 0 16px 48px rgba(123,47,255,0.55);
         }
 
         .fab-dot {
@@ -251,19 +312,19 @@
             height: 60px;
             border-radius: 50%;
             background: linear-gradient(135deg, #3633d4, #7b1eff);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 32px rgba(123,47,255,0.5), 0 0 0 1px rgba(123,47,255,0.3);
+            box-shadow: 0 8px 32px rgba(123,47,255,0.45), 0 0 0 1px rgba(123,47,255,0.25);
             transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
             animation: fabEntrance 0.6s cubic-bezier(0.34,1.56,0.64,1) 1s both;
         }
 
         .chat-trigger:hover {
             transform: scale(1.12);
-            box-shadow: 0 12px 40px rgba(123,47,255,0.7);
+            box-shadow: 0 12px 40px rgba(123,47,255,0.65);
         }
 
         .chat-trigger svg { width: 26px; height: 26px; }
@@ -276,7 +337,7 @@
             position: absolute;
             inset: -4px;
             border-radius: 50%;
-            border: 2px solid rgba(123,47,255,0.5);
+            border: 2px solid rgba(123,47,255,0.4);
             animation: ringPulse 2.5s ease-out infinite;
         }
 
@@ -285,14 +346,13 @@
             100% { transform: scale(1.55); opacity: 0; }
         }
 
-        /* tooltip */
         .chat-tooltip {
             position: fixed;
             bottom: 104px;
             left: 32px;
-            background: rgba(10,6,30,0.95);
+            background: rgba(6,4,15,0.97);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
             padding: 10px 16px;
             color: white;
@@ -311,7 +371,6 @@
             transform: translateY(0);
         }
 
-        /* panel */
         .chat-panel {
             position: fixed;
             bottom: 108px;
@@ -321,13 +380,13 @@
             max-height: 520px;
             display: flex;
             flex-direction: column;
-            background: rgba(10,6,30,0.97);
+            background: rgba(6,4,15,0.98);
             backdrop-filter: blur(40px);
             -webkit-backdrop-filter: blur(40px);
-            border: 1px solid rgba(123,47,255,0.3);
+            border: 1px solid rgba(123,47,255,0.25);
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 0 0 1px rgba(123,47,255,0.15), 0 32px 80px rgba(0,0,0,0.7), 0 8px 32px rgba(123,47,255,0.2);
+            box-shadow: 0 0 0 1px rgba(123,47,255,0.1), 0 32px 80px rgba(0,0,0,0.8), 0 8px 32px rgba(123,47,255,0.15);
             opacity: 0;
             transform: translateY(16px) scale(0.95);
             pointer-events: none;
@@ -340,10 +399,9 @@
             pointer-events: all;
         }
 
-        /* header */
         .chat-header {
             padding: 18px 20px 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -370,7 +428,7 @@
 
         .chat-header-sub {
             font-size: 0.72rem;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255,255,255,0.4);
             display: flex;
             align-items: center;
             gap: 5px;
@@ -385,7 +443,6 @@
             background: #4ade80;
         }
 
-        /* messages */
         .chat-messages {
             flex: 1;
             overflow-y: auto;
@@ -397,7 +454,7 @@
         }
 
         .chat-messages::-webkit-scrollbar { width: 4px; }
-        .chat-messages::-webkit-scrollbar-thumb { background: rgba(123,47,255,0.4); border-radius: 4px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(123,47,255,0.3); border-radius: 4px; }
 
         .msg { max-width: 88%; animation: msgIn 0.22s ease-out; }
         .msg.bot { align-self: flex-start; }
@@ -416,10 +473,10 @@
         }
 
         .msg.bot .msg-bubble {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.07);
             border-bottom-left-radius: 4px;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.88);
         }
 
         .msg.user .msg-bubble {
@@ -428,15 +485,14 @@
             color: white;
         }
 
-        /* link chip */
         .msg-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
             margin-top: 9px;
             padding: 8px 13px;
-            background: rgba(123,47,255,0.18);
-            border: 1px solid rgba(123,47,255,0.4);
+            background: rgba(123,47,255,0.15);
+            border: 1px solid rgba(123,47,255,0.35);
             border-radius: 9px;
             color: #c4a9ff;
             text-decoration: none;
@@ -447,17 +503,16 @@
         }
 
         .msg-link:hover {
-            background: rgba(123,47,255,0.35);
+            background: rgba(123,47,255,0.3);
             color: white;
             transform: translateY(-1px);
         }
 
-        /* typing */
         .typing-indicator {
             align-self: flex-start;
             padding: 10px 16px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.07);
             border-radius: 16px;
             border-bottom-left-radius: 4px;
             display: none;
@@ -472,7 +527,7 @@
         .typing-dot {
             width: 6px; height: 6px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.35);
             animation: typingBounce 1.2s ease-in-out infinite;
         }
 
@@ -484,7 +539,6 @@
             30% { transform: translateY(-5px); opacity:1; }
         }
 
-        /* suggestions */
         .chat-suggestions {
             padding: 4px 16px 10px;
             display: flex;
@@ -495,10 +549,10 @@
 
         .suggestion-chip {
             padding: 6px 12px;
-            background: rgba(123,47,255,0.14);
-            border: 1px solid rgba(123,47,255,0.3);
+            background: rgba(123,47,255,0.1);
+            border: 1px solid rgba(123,47,255,0.25);
             border-radius: 20px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.65);
             font-size: 0.74rem;
             font-weight: 600;
             cursor: pointer;
@@ -507,15 +561,14 @@
         }
 
         .suggestion-chip:hover {
-            background: rgba(123,47,255,0.3);
+            background: rgba(123,47,255,0.28);
             color: white;
-            border-color: rgba(123,47,255,0.6);
+            border-color: rgba(123,47,255,0.55);
         }
 
-        /* input */
         .chat-input-area {
             padding: 12px 16px 16px;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255,255,255,0.05);
             display: flex;
             gap: 10px;
             align-items: flex-end;
@@ -524,8 +577,8 @@
 
         .chat-input {
             flex: 1;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 14px;
             padding: 10px 14px;
             color: white;
@@ -539,8 +592,8 @@
             transition: border-color 0.2s;
         }
 
-        .chat-input::placeholder { color: rgba(255,255,255,0.3); }
-        .chat-input:focus { border-color: rgba(123,47,255,0.5); }
+        .chat-input::placeholder { color: rgba(255,255,255,0.25); }
+        .chat-input:focus { border-color: rgba(123,47,255,0.45); }
 
         .chat-send {
             width: 40px; height: 40px;
@@ -553,13 +606,12 @@
             justify-content: center;
             flex-shrink: 0;
             transition: all 0.2s;
-            box-shadow: 0 4px 16px rgba(123,47,255,0.4);
+            box-shadow: 0 4px 16px rgba(123,47,255,0.35);
         }
 
-        .chat-send:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(123,47,255,0.6); }
+        .chat-send:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(123,47,255,0.55); }
         .chat-send:disabled { opacity: 0.4; cursor: default; transform: none; }
 
-        /* responsive */
         @media (max-width: 768px) {
             .main-title { font-size: 2.8rem; letter-spacing: -1px; }
             .resources-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -582,7 +634,7 @@
 
 <div class="main-container">
     <div class="hero-section">
-        <h1 class="main-title"> RECURSOS DE MARKETING </h1>
+        <h1 class="main-title">RECURSOS DE MARKETING</h1>
     </div>
 
     <div class="resources-grid">
@@ -648,13 +700,17 @@
             <div class="resource-links">
                 <a href="https://landing.enter.edu.pe/enters-benefits" class="resource-link" target="_blank"><span class="link-icon">🎓</span>Benefits - Estudiantes</a>
                 <a href="https://landing.enter.edu.pe/beneficios" class="resource-link" target="_blank"><span class="link-icon">✨</span>Benefits - Leads</a>
-                <a href="https://arianacossio.github.io/ranking/" class="resource-link" target="_blank"><span class="link-icon">🏆</span>Ranking</a>
+                <a href="https://arianacossio.github.io/ranking/" class="resource-link ranking-btn" target="_blank">
+                    <span class="ranking-icon-wrap">🏆</span>
+                    Generador de ranking
+                    <span class="ranking-badge">LIVE</span>
+                </a>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <p>💜 Enter Tech School </p>
+        <p>💜 Enter Tech School</p>
     </div>
 </div>
 
@@ -739,7 +795,7 @@ PLANTILLAS DE DISEÑO (Canva editables):
 - Demo Day: https://www.canva.com/design/DAGzvu2UTgU/3HwpNxIW3EpzOGlP_QjGCQ/edit
 - Flyers y Correos: https://www.canva.com/design/DAGRx-FfqHk/3tbD72N1suo28G2IBd0KgA/edit
 - Cabeceras para Correo: https://www.canva.com/design/DAGQAcdy16Q/L9bZURo1dgQ7xkV3lpiF4w/edit
-- Paid Media: https://www.canva.com/design/DAGnQAJst2s/cn0pLUCeXhnOhkHI-jzq8w/edit
+- Paid Media (editable Canva): https://www.canva.com/design/DAG93ATy4yg/ezgnXhIaGqRaCKMnm4NMUA/edit
 
 BROCHURES (visualización):
 - Desarrollo Web / Full Stack: https://landing.enter.edu.pe/brochure-fullstack
@@ -759,7 +815,22 @@ RECURSOS DE MARCA:
 - Brandbook: https://landing.enter.edu.pe/brandbook
 - Elementos de Marca y Fondos Zoom: https://www.canva.com/design/DAGeQRFkLWU/WWlA_pnlet-faX-I1A67Kg/edit
 - PPT Comercial B2B: https://www.canva.com/design/DAG5KLKwGrU/83pDj1n4P-x7P6MdTvya5w/edit
-- Fotos de Perfil para Grupos / Clases: https://www.canva.com/design/DAGms2SkZxo/hFtvcCqkAzBllhvEgxN6Jg/edit
+- Fotos de Perfil para Grupos / Clases (editable Canva): https://www.canva.com/design/DAGms2SkZxo/hFtvcCqkAzBllhvEgxN6Jg/edit
+
+LOGOS Y ARCHIVOS DE MARCA (Google Drive):
+- Logos PNG: https://drive.google.com/drive/folders/1l4U6mbiKdKBJtJQbZFxPISPa_BUr1_oe?usp=drive_link
+- Logos JPEG: https://drive.google.com/drive/folders/1O-MsRCHnP9NAZlBuVsv5w-R1suQPVANl?usp=drive_link
+- Fotos de Perfil (archivos): https://drive.google.com/drive/folders/1nJ-o34Z05-qScZB7sEdOnsLk7t66bhs6?usp=drive_link
+- Imágenes / Fotos Equipo IA: https://drive.google.com/drive/folders/1TbrUJBKCne5h8k3KFju2T93feKFp7yo9?usp=drive_link
+- Paid Media (archivos Drive): https://drive.google.com/drive/folders/1SLEXjLqXdNyV0JWSBSck6zFc-oKVAs3b?usp=drive_link
+
+PORTADAS Y PIEZAS ADICIONALES (Canva):
+- Portada Reels: https://www.canva.com/design/DAHDJJ9rEJU/lEZhm6OxeWeO1ovxQynVtQ/edit
+- Portada Pauta / Ads: https://www.canva.com/design/DAHDHNS14tY/kqGfOXjwKlAPx1eIBDOBDg/edit
+
+BROCHURES CETEMIN:
+- Brochure Cetemin (visualización): https://landing.enter.edu.pe/beneficios-cetemin
+- Brochure Cetemin editable (Canva): https://www.canva.com/design/DAF23zBFr2o/9vdySCThq6Ph_TYeMrHc_g/edit
 
 CERTIFICADOS:
 - Carpeta de Certificados: https://www.canva.com/folder/FAF7IV2KpYg
@@ -767,7 +838,7 @@ CERTIFICADOS:
 ENTERS BENEFITS:
 - Benefits para Estudiantes: https://landing.enter.edu.pe/enters-benefits
 - Benefits para Leads / Prospectos: https://landing.enter.edu.pe/beneficios
-- Ranking de estudiantes: https://arianacossio.github.io/ranking/
+- Generador de ranking / Ranking de estudiantes: https://arianacossio.github.io/ranking/
 
 REGLAS ESTRICTAS:
 1. Responde siempre en español.
@@ -781,12 +852,12 @@ EJEMPLO DE RESPUESTA CORRECTA:
 Plantilla editable para presentaciones de kick off
 LINK: https://www.canva.com/design/DAG0YdvlzUg/QufZjITNLzHDIa4d3szuQQ/edit`;
 
-const chatTrigger = document.getElementById('chatTrigger');
-const chatPanel   = document.getElementById('chatPanel');
-const chatInput   = document.getElementById('chatInput');
-const chatSend    = document.getElementById('chatSend');
-const messagesEl  = document.getElementById('chatMessages');
-const typingEl    = document.getElementById('typingIndicator');
+const chatTrigger  = document.getElementById('chatTrigger');
+const chatPanel    = document.getElementById('chatPanel');
+const chatInput    = document.getElementById('chatInput');
+const chatSend     = document.getElementById('chatSend');
+const messagesEl   = document.getElementById('chatMessages');
+const typingEl     = document.getElementById('typingIndicator');
 const suggestionsEl = document.getElementById('suggestionsEl');
 
 let isOpen = false;
@@ -805,10 +876,7 @@ chatInput.addEventListener('input', () => {
 });
 
 chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        handleSend();
-    }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
 });
 
 function sendSuggestion(chip) {
@@ -879,13 +947,12 @@ function renderBotResponse(raw) {
 
     let html = '<div class="msg-bubble">';
 
-    if (contextLines.length) {
-        html += esc(contextLines.join(' '));
-    }
+    if (contextLines.length) html += esc(contextLines.join(' '));
 
     links.forEach(url => {
         const label = url.includes('canva.com') ? '↗ Abrir en Canva'
                     : url.includes('landing.enter') ? '↗ Ver brochure'
+                    : url.includes('drive.google') ? '↗ Abrir en Drive'
                     : url.includes('github') ? '↗ Ver ranking'
                     : '↗ Abrir recurso';
 
@@ -899,9 +966,7 @@ function renderBotResponse(raw) {
         </a>`;
     });
 
-    if (!contextLines.length && !links.length) {
-        html += esc(raw);
-    }
+    if (!contextLines.length && !links.length) html += esc(raw);
 
     html += '</div>';
     div.innerHTML = html;
@@ -911,10 +976,8 @@ function renderBotResponse(raw) {
 
 function esc(str) {
     return String(str)
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;');
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 </script>
 </body>
